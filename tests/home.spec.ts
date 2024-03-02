@@ -14,4 +14,14 @@ test.describe('Home', () => {
 
     await expect(page).toHaveTitle('About – Practice E-Commerce Site');
   })
+
+  test('Click get started button using CSS Selector', async ({ page }) => {
+    await page.goto('https://practice.sdetunicorns.com');
+
+    // Click the get started button.
+    await page.locator('#get-started').click();
+
+    // verify url has #get-started
+    await expect(page).toHaveURL(/.*#get-started/);
+  })
 })
