@@ -24,4 +24,16 @@ test.describe('Home', () => {
     // verify url has #get-started
     await expect(page).toHaveURL(/.*#get-started/);
   })
+
+  test('Verify heading text is visible using text selector', async ({ page }) => {
+    await page.goto('https://practice.sdetunicorns.com');
+
+    // find the text
+    const headingText = page.getByText('Think different. Make different.', {
+      exact: true,
+    });
+
+    // verify heading text is visible
+    await expect(headingText).toBeVisible();
+  })
 })
