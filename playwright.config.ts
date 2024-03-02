@@ -42,7 +42,11 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        // run the tests in headful mode
+        headless: false,
+      },
     },
 
     // {
