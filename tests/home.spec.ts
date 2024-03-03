@@ -36,4 +36,14 @@ test.describe('Home', () => {
     // verify heading text is visible
     await expect(headingText).toBeVisible();
   })
+
+  test('Verify home link is enabled using text and css selector', async ({ page }) => {
+    await page.goto('https://practice.sdetunicorns.com');
+
+    // find the home text
+    const homeText = page.locator('#zak-primary-menu >> text=Home');
+
+    // verify heading text is enabled
+    await expect(homeText).toBeEnabled();
+  })
 })
