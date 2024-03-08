@@ -7,13 +7,16 @@ test.describe('Upload File', () => {
     await page.goto('https://practice.sdetunicorns.com/cart/');
 
     // store test file path
-    const filePath = path.join(__dirname, '../data/logotitle.png');
+    const filePath = path.join(__dirname, '../data/3mb-file.pdf');
 
     // upload test file
     await page.setInputFiles('input#upfile_1', filePath);
 
     // click the submit button
     await page.locator('#upload_1').click();
+
+    // hardcoded wait - WRONG WAY
+    await page.waitForTimeout(5000);
 
     // assertion
     await expect(page.locator('#wfu_messageblock_header_1_1'))
