@@ -18,6 +18,9 @@ test.describe('Home', () => {
   test('Click get started button using CSS Selector', async ({ page }) => {
     await page.goto('https://practice.sdetunicorns.com');
 
+    // verify url has not #get-started
+    await expect(page).not.toHaveURL(/.*#get-started/);
+
     // Click the get started button.
     await page.locator('#get-started').click();
 
@@ -34,6 +37,7 @@ test.describe('Home', () => {
     });
 
     // verify heading text is visible
+    await expect(headingText).not.toBeHidden();
     await expect(headingText).toBeVisible();
   })
 
