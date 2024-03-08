@@ -1,21 +1,22 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Blog', () => {
-  test('Find the lenght of the posts number', async ({ page }) => {
+  test('Verify Recent Posts count and verify the length of each list item', async ({ page }) => {
+    // open blog page
     await page.goto('https://practice.sdetunicorns.com/blog/');
 
-    // verify number of posts
-    await expect(page.locator('#recent-posts-3 ul').getByRole('listitem')).toHaveCount(5)
-  })
+    // get the recent post list elements
+    const recentPostsList = page.locator('#recent-posts-3 ul li');
 
-  test('Check if every post has min length 10', async ({ page }) => {
-    await page.goto('https://practice.sdetunicorns.com/blog/');
-    const posts = await page.locator('#recent-posts-3 ul').getByRole('listitem');
-    
-    for (let i = 0; i < await posts.count(); i++) {
-      const postText = await posts.nth(i).innerText();
-      expect(postText.length).toBeGreaterThanOrEqual(10);
+    // loop through the list and assert the char length > 10
+    for (const el of await recentPostsList.elementHandles()) {
+      const textContent = (await el.textContent())?.trim();
+      if (textContent) {
+        expect(textContent.length).toBeGreaterThan(10);
+      }
     }
+
+    // assert the total length = 5
+    expect(await recentPostsList.count()).toEqual(5);
   })
-  
 })

@@ -1,26 +1,20 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Contact', () => {
-  test('Open the page, fill te form, submit and check the success message', async ({ page }) => {
-    // open url
+  test('Fill contact form and verify success message', async ({ page }) => {
+    // open contact page
     await page.goto('https://practice.sdetunicorns.com/contact/');
 
-    // fill the name input text
-    await page.getByLabel('Name *').fill('Simone');
+    // fill out the input fields
+    await page.locator('.contact-name input').fill('Test Name');
+    await page.locator('.contact-email input').fill('test@email.com');
+    await page.locator('.contact-phone input').fill('13456743');
+    await page.locator('.contact-message textarea').fill('This is a test message');
 
-    // fill the email input text
-    await page.getByLabel('Email *').fill('simone@test.com');
-
-    // fill the name input text
-    await page.getByLabel('Phone *').fill('3335678432');
-
-    // fill the name input text
-    await page.getByRole('textbox', { name: 'Message' }).fill('This is a message for the space');
-
-    // find and click the submit button
-    await page.locator('button:has-text("Submit")').click();
+    // click submit
+    await page.locator('button[type=submit]').click();
 
     // verify success message
-    await expect(page.getByRole('alert')).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
+    await expect(page.locator('div[role=alert]')).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
   })
 })
