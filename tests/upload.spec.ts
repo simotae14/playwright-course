@@ -16,7 +16,13 @@ test.describe('Upload File', () => {
     await page.locator('#upload_1').click();
 
     // hardcoded wait - WRONG WAY
-    await page.waitForTimeout(5000);
+    // await page.waitForTimeout(5000);
+
+    // wait for condition
+    await page.locator('#wfu_messageblock_header_1_1').waitFor({
+      state: 'visible',
+      timeout: 10000,
+    });
 
     // assertion
     await expect(page.locator('#wfu_messageblock_header_1_1'))
