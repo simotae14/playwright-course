@@ -5,6 +5,8 @@ test.describe('Contact', () => {
     // open contact page
     await page.goto('https://practice.sdetunicorns.com/contact/');
 
+    await page.pause();
+
     // fill out the input fields
     await page.locator('.contact-name input').fill('Test Name');
     await page.locator('.contact-email input').fill('test@email.com');
