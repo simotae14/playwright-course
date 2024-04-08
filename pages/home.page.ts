@@ -1,11 +1,13 @@
+import { Page, Locator } from '@playwright/test';
+
 class HomePage {
-  page: any;
-  getStartedButton: any;
-  headingText: any;
-  homeText: any;
-  searchIcon: any;
-  navLinks: any;
-  constructor(page) {
+  page: Page;
+  getStartedButton: Locator;
+  headingText: Locator;
+  homeText: Locator;
+  searchIcon: Locator;
+  navLinks: Locator;
+  constructor(page: Page) {
     this.page = page;
     this.getStartedButton = page.locator('#get-started');
     this.headingText = page.getByText('Think different. Make different.', {
