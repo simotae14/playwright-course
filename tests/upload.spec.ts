@@ -9,7 +9,7 @@ test.describe('Upload File', () => {
   test('should upload a test file', async ({ page }) => {
     cartPage = new CartPage(page);
     // Open url
-    await page.goto('https://practice.sdetunicorns.com/cart/');
+    await page.goto('/cart');
 
     // store test file path
     const filePath = path.join(__dirname, '../data/3mb-file.pdf');
@@ -24,7 +24,7 @@ test.describe('Upload File', () => {
 
   test('should upload a test file on a hidden input field', async ({ page }) => {
     // Open url
-    await page.goto('https://practice.sdetunicorns.com/cart/');
+    await page.goto('/cart');
 
     // provide test file path
     const filePath = path.join(__dirname, '../data/logotitle.png');

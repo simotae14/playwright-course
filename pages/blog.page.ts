@@ -9,7 +9,7 @@ class BlogPage {
   }
 
   async navigate() {
-    await this.page.goto('https://practice.sdetunicorns.com/blog/');
+    await this.page.goto('/blog');
   }
 }
 
