@@ -10,9 +10,9 @@ async function globalSetup(config: FullConfig) {
   await page.locator('#password').fill('PracticePass1!');
   await page.locator('[value="Log in"]').click();
 
-  // save signe-in state to 'loggedIn.json'
+  // save signe-in state to 'loggedInState.json'
   await page.context().storageState({
-    path: 'loggedIn.json',
+    path: 'loggedInState.json',
   });
   await browser.close(); // close browser
 }
