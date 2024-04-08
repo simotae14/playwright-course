@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { faker } from '@faker-js/faker';
+
 import ContactPage from '../pages/contact.page';
 
 test.describe('Contact', () => {
@@ -10,7 +12,7 @@ test.describe('Contact', () => {
     await contactPage.navigate();
 
     // fill out the input fields and submit
-    await contactPage.submitForm('Test Name', 'test@email.com', '13456743', 'This is a test message');
+    await contactPage.submitForm(faker.person.fullName(), faker.internet.email(), faker.phone.number(), faker.lorem.paragraphs(2));
 
     // verify success message
     await expect(contactPage.successTxt).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
