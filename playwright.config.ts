@@ -47,7 +47,7 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'],
         // run the tests in headful mode
-        headless: false,
+        headless: true,
       },
     },
 
