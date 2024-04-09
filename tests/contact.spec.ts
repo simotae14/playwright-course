@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 
 import ContactPage from '../pages/contact.page';
 
-test.describe.only('Contact', () => {
+test.describe('Contact', () => {
   let contactPage: ContactPage;
   test('Fill contact form and verify success message', async ({ page }) => {
     contactPage = new ContactPage(page);
